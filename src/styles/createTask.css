@@ -1,0 +1,70 @@
+div.createTask {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.01);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.createTaskDiv {
+    width: 500px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #373b41;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: 1px rgba(143, 148, 160, 0.123) solid;
+}
+
+.closeBtnDiv {
+    position: relative;
+}
+
+.creatingTask {
+    padding: 10px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.createTaskDiv .close {
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 16px;
+    height: 45px;
+    width: 50px;
+}
+
+.createTaskDiv input {
+    border: 0;
+    background: 0;
+    outline: 0;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 3.2px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #212327;
+    width: 220px;
+    height: 50px;
+    color: rgba(255, 255, 255, 0.87);
+    position: relative;
+
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.createTaskBtn {
+    width: 120px;
+    height: 50px;
+    text-wrap: nowrap;
+    font-size: 16px;
+}

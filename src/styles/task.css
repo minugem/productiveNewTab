@@ -1,0 +1,49 @@
+
+
+.taskItem {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.task {
+    border: 0;
+    background: 0;
+    outline: 0;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 3.2px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    width: 200px;
+    height: 50px;
+    color: rgba(255, 255, 255, 0.87);
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: 1px rgba(143, 148, 160, 0.123) solid;
+}
+
+
+.taskItem button {
+    height: 56.4px;
+    width: 56.4px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: 1px rgba(143, 148, 160, 0.123) solid;
+}
+
+.checkBtn button:hover {
+    color: rgb(20, 179, 20);
+}
+
+.editBtn button:hover {
+    color: rgb(238, 159, 41);
+}

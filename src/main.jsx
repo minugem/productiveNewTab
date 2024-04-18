@@ -4,8 +4,8 @@ import { createRoot } from 'react-dom/client';
 import NewTaskButton from './components/NewTaskButton.jsx';
 import Task from './components/Task.jsx';
 import CreateTask from './components/createTask.jsx';
-import './styles/index.css';
 import SearchBar from './components/searchBar.jsx';
+import './styles/index.css';
 
 function Main() {
   const [tasks, setTasks] = useState([]);
@@ -44,17 +44,25 @@ function Main() {
     storeData(tasks);
   }, [tasks]);
 
+
+  function TaskList() {
+    return (
+      <>
+        <div className='taskHeading'>
+          <p>Tasks</p>
+        </div>
+        <div className="taskContainer">
+          {tasks.map((task) => (
+            <Task key={task.id} title={task.title} fn={() => removeTask(task.id)} />
+          ))}
+        </div>
+      </>
+    )
+  }
   return (
     <>
       <SearchBar />
-      <div className='taskHeading'>
-        <p>Tasks</p>
-      </div>
-      <div className="taskContainer">
-        {tasks.map((task) => (
-          <Task key={task.id} title={task.title} fn={() => removeTask(task.id)} />
-        ))}
-      </div>
+      <TaskList />
       <NewTaskButton setShowButton={setShowButton} />
       <CreateTask showButton={showButton} setShowButton={setShowButton} addTask={addTask} />
     </>

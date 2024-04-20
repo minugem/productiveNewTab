@@ -23,7 +23,7 @@ function SearchBar() {
                     autoFocus
                 />
                 <button className='searchButton' type="submit">
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         search
                     </span>
                 </button>

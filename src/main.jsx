@@ -10,6 +10,7 @@ import './styles/index.css';
 function Main() {
   const [tasks, setTasks] = useState([]);
   const [showButton, setShowButton] = useState(false);
+  const [taskLists, setTaskLists] = useState([]);
 
   const addTask = (taskTitle) => {
     const taskId = tasks.length;
@@ -18,18 +19,30 @@ function Main() {
     storeData([...tasks, newTask]);
   };
 
-  const storeData = (data) => {
-    localStorage.setItem('tasks', JSON.stringify(data));
+  const addTaskList = () => {
+    const taskListId = taskLists.length;
+    const newTaskList = { id: taskListId, title: "Tasks " + Number(taskListId + 1) };
+    setTaskLists([...taskLists, newTaskList]);
+  };
+
+  const storeData = () => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('taskLists', JSON.stringify(taskLists));
   }
 
   const loadData = () => {
     const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const storedTaskLists = JSON.parse(localStorage.getItem('taskLists')) || [];
     setTasks(storedTasks);
+    console.log(storedTaskLists);
+    setTaskLists(storedTaskLists);
   }
 
   const clearData = () => {
     localStorage.removeItem('tasks');
+    localStorage.removeItem('taskLists');
     setTasks([]);
+    setTaskLists([]);
   }
 
   const removeTask = (id) => {
@@ -44,26 +57,33 @@ function Main() {
     storeData(tasks);
   }, [tasks]);
 
+  useEffect(() => {
+    storeData();
+  }, [tasks, taskLists]);
 
-  function TaskList() {
+  function TaskList(props) {
     return (
-      <>
+      <div className='taskList'>
         <div className='taskHeading'>
-          <p>Tasks</p>
+          <p>{props.title}</p>
         </div>
         <div className="taskContainer">
           {tasks.map((task) => (
             <Task key={task.id} title={task.title} fn={() => removeTask(task.id)} />
           ))}
         </div>
-      </>
+      </div>
     )
   }
   return (
     <>
       <SearchBar />
-      <TaskList />
-      <NewTaskButton setShowButton={setShowButton} />
+      <div className='taskLists'>
+        {taskLists.map((taskList) => (
+          <TaskList key={taskList.id} title={taskList.title} />
+        ))}
+      </div>
+      <NewTaskButton setShowButton={setShowButton} addTaskList={addTaskList} />
       <CreateTask showButton={showButton} setShowButton={setShowButton} addTask={addTask} />
     </>
   );

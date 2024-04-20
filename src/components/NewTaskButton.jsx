@@ -4,11 +4,14 @@ import '../styles/newTask.css'
 function NewTaskButton(props) {
 
   return (
-      <div>
-        <button className='newTask' onMouseUp={() => props.setShowButton(true)}>
-          +
-        </button>
-      </div>
+    <div>
+      <button className='newTask' onMouseUp={() => props.setShowButton(true)}>
+        +
+      </button>
+      <button className='newTask' onMouseUp={() => props.addTaskList()}>
+        =
+      </button>
+    </div>
   )
 }
 

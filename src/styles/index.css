@@ -76,3 +76,13 @@ div.taskHeading {
   margin-top: 20px;
   margin-bottom: 15px;
 }
+
+.taskLists {
+  display: flex;
+  gap: 25px;
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+}

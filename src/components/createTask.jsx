@@ -1,17 +1,23 @@
 import { useState } from 'react'
 import '../styles/createTask.css'
 
-function CreateTask({ showButton, setShowButton, addTask }) {
+function CreateTask({ showButton, setShowButton, addTask, taskLists }) {
     const [taskName, settaskName] = useState('');
+    const [selectedTaskGroup, setSelectedTaskGroup] = useState(0);
 
     const handleInputChange = (event) => {
         settaskName(event.target.value);
     }
 
+    const handleSelectChange = (event) => {
+        setSelectedTaskGroup(event.target.value);
+    }
+
     const createTask = () => {
         setShowButton(false)
-        addTask((taskName != '' ? taskName : 'New Task'));
+        addTask((taskName != '' ? taskName : 'New Task'), selectedTaskGroup);
         settaskName('');
+        setSelectedTaskGroup(0);
     }
 
     return (
@@ -24,7 +30,7 @@ function CreateTask({ showButton, setShowButton, addTask }) {
                         </div>
                         <div className='creatingTask'>
                             <div>
-                                <input type="text" name="" placeholder='New Task' value={taskName} onChange={handleInputChange} id="" autoFocus="true" onKeyDown={event => {
+                                <input type="text" name="" placeholder='New Task' value={taskName} onChange={handleInputChange} id="" autoFocus={true} onKeyDown={event => {
                                     if (event.key === 'Enter') {
                                         createTask();
                                     }
@@ -32,6 +38,12 @@ function CreateTask({ showButton, setShowButton, addTask }) {
                             </div>
                             <div>
                                 <button className='createTaskBtn' onClick={createTask}>Create Task</button>
+                                <select className='selectGroup' name="taskListSelect" id="taskListSelect" onChange={handleSelectChange}>
+                                    {taskLists.map((taskList, index) => (
+                                        <option key={index} value={taskList.id}>{taskList.title}</option>
+                                    ))}
+                                </select>
+
                             </div>
                         </div>
                     </div>

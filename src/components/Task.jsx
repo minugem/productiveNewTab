@@ -7,11 +7,7 @@ function Task(props) {
       <div className='task'>
         <p>{props.title}</p>
       </div>
-      <div className="editBtn">
-        <button onClick={props.fn}><span class="material-symbols-outlined">
-          edit
-        </span></button>
-      </div>
+
       <div className="checkBtn">
         <button onClick={props.fn}>✓</button>
       </div>

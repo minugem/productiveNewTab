@@ -68,3 +68,17 @@ input::placeholder {
     text-wrap: nowrap;
     font-size: 16px;
 }
+
+.selectGroup {
+    font-family: inherit;
+    width: 120px;
+    font-size: 16px;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #212327;
+    color: white;
+    border: 0;
+    border-radius: 8px;
+    padding: 8px 8px;
+}

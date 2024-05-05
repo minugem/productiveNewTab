@@ -34,3 +34,8 @@ button.newTask {
     transition: 0.04s;
   }
   
+  .newTaskButtonDiv {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }

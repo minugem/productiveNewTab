@@ -11,31 +11,27 @@ button {
   transition: 0.04s;
   color: rgba(255, 255, 255, 0.87);
 }
-
-button.newTask {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 18px;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    outline: #4caf4f00 solid 0px;
-    transition: 0.04s;
-    height: 45px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  button.newTask:hover {
-    outline: #ffffffe0 solid 3px;
-    transition: 0.04s;
-  }
-  
   .newTaskButtonDiv {
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
+  }
+
+  .newTask {
+    font-size: 20px;
+  }
+
+  button.taskListButton {
+    font-size: 20px;
+    width: 55px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .taskListButton:hover {
+    outline: #ffffffe0 solid 3px;
+
   }

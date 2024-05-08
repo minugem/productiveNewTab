@@ -101,12 +101,9 @@ div.taskHeading {
 }
 
 .taskHeading button:hover {
-  color: rgb(238, 159, 41);
+  outline: #ffffffe0 solid 3px;
 }
 
-.taskHeading .close:hover {
-  color: rgb(248, 59, 46);
-}
 
 div.editTaskList {
   width: 100vw;

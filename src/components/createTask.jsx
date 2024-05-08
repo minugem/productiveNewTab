@@ -1,23 +1,17 @@
 import { useState } from 'react'
 import '../styles/createTask.css'
 
-function CreateTask({ showButton, setShowButton, addTask, taskLists }) {
+function CreateTask({ showButton, setShowButton, addTask, createTaskId }) {
     const [taskName, settaskName] = useState('');
-    const [selectedTaskGroup, setSelectedTaskGroup] = useState(0);
 
     const handleInputChange = (event) => {
         settaskName(event.target.value);
     }
 
-    const handleSelectChange = (event) => {
-        setSelectedTaskGroup(event.target.value);
-    }
-
     const createTask = () => {
         setShowButton(false)
-        addTask((taskName != '' ? taskName : 'New Task'), selectedTaskGroup);
+        addTask((taskName != '' ? taskName : 'New Task'), createTaskId);
         settaskName('');
-        setSelectedTaskGroup(0);
     }
 
     return (
@@ -38,12 +32,6 @@ function CreateTask({ showButton, setShowButton, addTask, taskLists }) {
                             </div>
                             <div>
                                 <button className='createTaskBtn' onClick={createTask}>Create Task</button>
-                                <select className='selectGroup' name="taskListSelect" id="taskListSelect" onChange={handleSelectChange}>
-                                    {taskLists.map((taskList, index) => (
-                                        <option key={index} value={taskList.id}>{taskList.title}</option>
-                                    ))}
-                                </select>
-
                             </div>
                         </div>
                     </div>

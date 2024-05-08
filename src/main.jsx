@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
-import NewTaskButton from './components/NewTaskButton.jsx';
 import Task from './components/Task.jsx';
 import CreateTask from './components/createTask.jsx';
 import SearchBar from './components/searchBar.jsx';
+import './styles/newTask.css';
 import './styles/index.css';
 
 function Main() {
@@ -12,6 +12,7 @@ function Main() {
   const [showButton, setShowButton] = useState(false);
   const [taskLists, setTaskLists] = useState([]);
   const [showTaskListEdit, setTaskListEdit] = useState(false);
+  const [createTaskId, setCreateTaskId] = useState(0);
 
   const addTask = (taskTitle, taskGroup) => {
     const taskId = tasks.length;
@@ -58,7 +59,10 @@ function Main() {
     setTaskLists(taskLists.map(taskList => taskList.id === id ? { ...taskList, title: newName } : taskList));
   }
 
-
+  const createTasks = (id) => {
+    setCreateTaskId(id);
+    setShowButton(true);
+  }
 
   useEffect(() => {
     loadData();
@@ -84,6 +88,10 @@ function Main() {
       <div className='taskList'>
         <div className='taskHeading'>
           <p>{props.title}</p>
+          <button className='newTask' onMouseUp={() => createTasks(props.id)}>
+            +
+          </button>
+
           <button onClick={() => setTaskListEdit(true)}><span className="material-symbols-outlined">
             edit
           </span></button>
@@ -128,13 +136,15 @@ function Main() {
   return (
     <>
       <SearchBar />
-      <NewTaskButton setShowButton={setShowButton} addTaskList={addTaskList} />
+      <button className='taskListButton' onMouseUp={() => addTaskList()}>
+        +
+      </button>
       <div className='taskLists'>
         {taskLists.map((taskList) => (
           <TaskList key={taskList.id} title={taskList.title} group={taskList.id} id={taskList.id} removeTaskList={() => removeTaskList(taskList.id)} changeTaskListName={(id, name) => changeTaskListName(id, name)} />
         ))}
       </div>
-      <CreateTask showButton={showButton} setShowButton={setShowButton} addTask={addTask} taskLists={taskLists} />
+      <CreateTask showButton={showButton} setShowButton={setShowButton} addTask={addTask} taskLists={taskLists} createTaskId={createTaskId}/>
     </>
   );
 }

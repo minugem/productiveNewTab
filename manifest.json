@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Productive New Tab",
+  "name": "Better New Tab",
   "version": "1.0",
+  "description": "A Chrome extension that provides a better new tab experience by letting you add tasks to a new chrome tab",
   "chrome_url_overrides" : {
     "newtab": "index.html"
   }
